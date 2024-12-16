@@ -20,16 +20,16 @@ public class TestingMain {
 
         int addResult = calculator.add(5, 3);
         if (addResult == 8) {
-            System.out.println("Test dodawania: OK");
+            System.out.println("Adding test: OK");
         } else {
-            System.out.println("Test dodawania: BŁĄD");
+            System.out.println("Adding test: ERROR");
         }
 
         int subtractResult = calculator.subtract(10, 4);
         if (subtractResult == 6) {
-            System.out.println("Test odejmowania: OK");
+            System.out.println("Subtract test: OK");
         } else {
-            System.out.println("Test odejmowania: BŁĄD");
+            System.out.println("Subtract test: ERROR");
         }
 
     }

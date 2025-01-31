@@ -1,34 +1,20 @@
 plugins {
   id 'java'
-  id 'application'
-  id 'org.javamodularity.moduleplugin' version '1.8.12'
 }
 
-group 'com.kodilla.good.patterns'
-version '1.0-SNAPSHOT'
+group = 'com.kodilla'
+version = '0.0.1-SNAPSHOT'
 
 repositories {
   mavenCentral()
 }
 
-ext {
-  junitVersion = '5.10.2'
-}
-
-sourceCompatibility = '21'
-targetCompatibility = '21'
-
-tasks.withType(JavaCompile) {
-  options.encoding = 'UTF-8'
-}
-
-
 dependencies {
-
-  testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+  testImplementation platform('org.junit:junit-bom:5.10.0')
+  testImplementation 'org.junit.jupiter:junit-jupiter'
+  testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '5.14.2'
 }
 
 test {
-useJUnitPlatform()}
-
+  useJUnitPlatform()
+}

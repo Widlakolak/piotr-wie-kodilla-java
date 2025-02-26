@@ -1,0 +1,46 @@
+-- Tworzenie tabeli ISSUESLISTS
+CREATE TABLE ISSUESLISTS (
+    ID SERIAL PRIMARY KEY,
+    NAME VARCHAR(100) NOT NULL
+);
+
+-- Tworzenie tabeli ISSUES
+CREATE TABLE ISSUES (
+    ID SERIAL PRIMARY KEY,
+    ISSUESLIST_ID INT NOT NULL,
+    SUMMARY VARCHAR(255) NOT NULL,
+    DESCRIPTION TEXT,
+    USER_ID_ASSIGNEDTO INT,
+    FOREIGN KEY (ISSUESLIST_ID) REFERENCES ISSUESLISTS(ID) ON DELETE CASCADE,
+    FOREIGN KEY (USER_ID_ASSIGNEDTO) REFERENCES USERS(ID) ON DELETE SET NULL
+);
+
+-- Dodanie list zadań
+INSERT INTO ISSUESLISTS (NAME) VALUES 
+('ToDo'),
+('In progress'),
+('Done');
+
+-- Dodanie zadań do listy 'ToDo'
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO) VALUES 
+(1, 'Naprawa błędu w API', 'Poprawić endpoint zwracający błędne dane', 1),
+(1, 'Projektowanie UI', 'Opracować nowy interfejs użytkownika', 2),
+(1, 'Optymalizacja zapytań SQL', 'Poprawić wydajność bazy danych', 3),
+(1, 'Testowanie nowej funkcjonalności', 'Napisać testy jednostkowe', 4),
+(1, 'Aktualizacja dokumentacji', 'Zaktualizować instrukcję obsługi', 5);
+
+-- Dodanie zadań do listy 'In progress'
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO) VALUES 
+(2, 'Kodowanie nowego modułu', 'Implementacja nowego modułu systemu', 2),
+(2, 'Refaktoryzacja kodu', 'Poprawa struktury kodu', 3),
+(2, 'Integracja zewnętrznego API', 'Podłączenie API płatności', 4),
+(2, 'Naprawa błędów UI', 'Poprawki wizualne w interfejsie', 5),
+(2, 'Wdrożenie systemu logowania', 'Dodać uwierzytelnianie OAuth', 1);
+
+-- Dodanie zadań do listy 'Done'
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO) VALUES 
+(3, 'Zakończona migracja danych', 'Przeniesienie danych do nowej bazy', 3),
+(3, 'Ukończony raport analityczny', 'Analiza statystyk sprzedaży', 4),
+(3, 'Poprawiona responsywność', 'Dostosowanie do urządzeń mobilnych', 5),
+(3, 'Wdrożenie wersji beta', 'Uruchomienie testowej wersji aplikacji', 1),
+(3, 'Zamknięcie sprintu', 'Podsumowanie sprintu w Scrumie', 2);

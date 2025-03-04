@@ -2,9 +2,14 @@ package com.kodilla.hibernate.manytomany;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
+
+@NamedNativeQuery(
+        name = "Company.retrieveByFirstThreeLetters",
+        query = "SELECT * FROM COMPANIES WHERE SUBSTRING(COMPANY_NAME, 1, 3) = :PREFIX",
+        resultClass = Company.class
+)
 
 @Entity
 @Table(name = "COMPANIES")

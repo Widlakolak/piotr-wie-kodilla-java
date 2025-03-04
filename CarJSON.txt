@@ -1,0 +1,26 @@
+{
+  "carName": "126p",
+  "carBrand": "Fiat",
+  "seats": [
+    {
+      "material": "fabric",
+      "color": "black",
+      "engineCapacity": "0.65L"
+    },
+    {
+      "material": "fabric",
+      "color": "grey",
+      "engineCapacity": "0.70L"
+    },
+    {
+      "material": "leather",
+      "color": "brown",
+      "engineCapacity": "0.65L"
+    },
+    {
+      "material": "leather",
+      "color": "yellow",
+      "engineCapacity": "2.00L"
+    }
+  ]
+}
